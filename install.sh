@@ -1,7 +1,10 @@
 #!/bin/sh
 # Edisyl CLI Installer
 # Usage: curl -fsSL https://raw.githubusercontent.com/FlipsideCrypto/edisyl-tools/main/install.sh | sh
-# Or with specific version: EDISYL_VERSION=1.0.0 curl -fsSL ... | sh
+# Or with specific version:
+#   curl -fsSL https://raw.githubusercontent.com/FlipsideCrypto/edisyl-tools/main/install.sh | EDISYL_VERSION=1.0.0 sh
+# (The env var must bind to `sh`, not `curl` — `EDISYL_VERSION=... curl ... | sh`
+#  would set the var on curl's process and the right-hand sh would never see it.)
 
 set -e
 
