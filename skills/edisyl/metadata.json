@@ -1,0 +1,21 @@
+{
+  "name": "edisyl",
+  "description": "Build and run AI agent fleets on the Flipside platform — author agents and skills from YAML, compose them into fleets and teams, and run missions.",
+  "version": "1.0.0",
+  "author": "flipside",
+  "homepage": "https://app.edisyl.com/",
+  "repository": "https://github.com/FlipsideCrypto/edisyl-tools",
+  "keywords": [
+    "edisyl",
+    "flipside",
+    "agents",
+    "skills",
+    "fleets",
+    "teams",
+    "missions",
+    "ai"
+  ],
+  "compatibility": {
+    "requires": ["edisyl CLI"]
+  }
+}
