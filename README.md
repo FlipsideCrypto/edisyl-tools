@@ -34,10 +34,12 @@ edisyl whoami
 
 ## Quick Start
 
-The best way to use Edisyl is through an AI coding assistant like [Claude Code](https://claude.ai/code). The skill teaches your assistant the two core surfaces of edisyl:
+The best way to use Edisyl is through an AI coding assistant like [Claude Code](https://claude.ai/code). The skill teaches your assistant the core surfaces of edisyl:
 
 1. **Agent configs and skills** — author and deploy from YAML
 2. **Fleets, teams, and missions** — compose deployed agents into fleets and run multi-agent missions
+3. **Data sources** — connect Snowflake / Postgres / BigQuery / Databricks / Redshift / MySQL and kick the introspect → enrich pipeline
+4. **Stratum** — natural-language → SQL resolve, plus the indexing/curation surface (snapshots, learning candidates, model readiness, resolution traces)
 
 ### Using with Claude Code
 
@@ -80,6 +82,17 @@ edisyl fleet team add <fleet-id> --team <team-id>
 edisyl mission create <fleet> "Summarize USDC activity last week" --follow
 edisyl mission tree <mission-id>
 edisyl chat <fleet>
+
+# Data sources — kicks introspect + Stratum enrichment on create
+edisyl data-sources test-connection --type postgres --config-file db.json
+edisyl data-sources create --name "Demo PG" --type postgres --config-file db.json
+edisyl stratum status -d <data-source-id>
+
+# Stratum — natural-language → SQL
+edisyl stratum resolve "Top 10 tokens by transfer count last 7 days" \
+  -d <data-source-id> --wait --rows 5
+edisyl stratum trace <resolution-id>            # diagnose what happened
+edisyl stratum candidates list                  # review optimizer suggestions
 ```
 
 For everything else (queries, sessions, uploads, api-keys), run:
@@ -95,6 +108,8 @@ When you install the Edisyl skill, your AI assistant learns:
 1. **Where to start**: `edisyl llm onboard` — the navigation guide built into the CLI
 2. **Agent and skill authoring**: `edisyl llm agents`, `edisyl llm skills`
 3. **Fleet/mission orchestration**: how to compose teams, kick off missions, follow plan trees
+4. **Data-source onboarding**: validate creds, create a data source, watch the introspect → enrich pipeline
+5. **Stratum**: resolve NL questions to SQL, inspect snapshots/indexes, debug cascade tiers, review learning candidates, trace past resolutions
 
 The skill is intentionally lean — the heavy reference content lives inside the CLI itself via `edisyl llm <topic>`, so it stays in sync with the deployed CLI version.
 

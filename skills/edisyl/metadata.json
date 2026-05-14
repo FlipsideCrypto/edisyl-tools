@@ -1,7 +1,7 @@
 {
   "name": "edisyl",
-  "description": "Build and run AI agent fleets on the Flipside platform — author agents and skills from YAML, compose them into fleets and teams, and run missions.",
-  "version": "1.0.0",
+  "description": "Build and run AI agent fleets on the Flipside platform — author agents and skills from YAML, compose them into fleets and teams, run missions, connect data warehouses, and drive Stratum NL→SQL resolve and indexing.",
+  "version": "1.1.0",
   "author": "flipside",
   "homepage": "https://app.edisyl.com/",
   "repository": "https://github.com/FlipsideCrypto/edisyl-tools",
@@ -13,7 +13,17 @@
     "fleets",
     "teams",
     "missions",
-    "ai"
+    "ai",
+    "stratum",
+    "data-sources",
+    "nl2sql",
+    "indexing",
+    "snowflake",
+    "postgres",
+    "bigquery",
+    "databricks",
+    "redshift",
+    "mysql"
   ],
   "compatibility": {
     "requires": ["edisyl CLI"]
